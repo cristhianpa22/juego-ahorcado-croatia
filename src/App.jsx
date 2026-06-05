@@ -6,6 +6,8 @@ import { PalabraSecreta } from "./components/PalabraSecreta";
 import { Teclado } from "./components/Teclado";
 import { EstadoFinJuego } from "./components/EstadoFinJuego";
 
+import imageFondo from "./assets/imagenes/fondo.jpeg";
+import logoCroacia from "./assets/imagenes/coat-of-arms-of-croatia-vector-illustration-removebg-preview.png"
 export default function App() {
   const {
     palabra,
@@ -16,39 +18,48 @@ export default function App() {
     haPerdido,
     juegoTerminado,
     intentarLetra,
-    iniciarJuego
+    iniciarJuego,
   } = useAhorcado();
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
-      <main className="w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8 flex flex-col justify-between">
-        <header className="text-center mb-4">
-          <h1 className="text-3xl font-black text-slate-800 tracking-tight">
-            AHORCADO<span className="text-indigo-600">.JS</span>
-          </h1>
-        </header>
+    <div
+      className="w-full min-h-screen   flex  justify-center  bg-cover bg-center bg-no-repeat relative "
+      style={{ backgroundImage: `url(${imageFondo})` }}
+    >
+      <div className="absolute inset-0 bg-white/75 backdrop-blur-xs z-0" />
+      
+      <main className="w-full   rounded-2xl    flex flex-col  gap-5 j z-10">
+        <header className="text-center p-4 bg-white/70 rounded-xl mb-2 flex  justify-start ">
+         <img src={logoCroacia} alt=""  className="h-12 w-12 "/>
+        <h1 className="text-3xl font-black text-blue-800 tracking-tight">
+         
+          CRO<span className="text-red-500">.Hangman</span>
+        </h1>
+        
+      </header>
+        <div className="flex flex-col ">
+          <Marcador errores={errores} />
+          <Pista pista={pista} />
+        </div>
 
-        <Marcador errores={errores} />
-
-        {/* Mostramos la pista de forma elegante */}
-        <Pista pista={pista} />
-
-        <PalabraSecreta 
-          palabra={palabra} 
-          letrasAdivinadas={letrasAdivinadas} 
-          haPerdido={haPerdido} 
+        <PalabraSecreta
+          palabra={palabra}
+          letrasAdivinadas={letrasAdivinadas}
+          haPerdido={haPerdido}
         />
 
-        <Teclado 
-          letrasAdivinadas={letrasAdivinadas} 
-          juegoTerminado={juegoTerminado} 
-          alPresionarLetra={intentarLetra} 
-        />
+        <div className="mt-2">
+          <Teclado
+            letrasAdivinadas={letrasAdivinadas}
+            juegoTerminado={juegoTerminado}
+            alPresionarLetra={intentarLetra}
+          />
+        </div>
 
-        <EstadoFinJuego 
-          haGanado={haGanado} 
-          haPerdido={haPerdido} 
-          alReiniciar={iniciarJuego} 
+        <EstadoFinJuego
+          haGanado={haGanado}
+          haPerdido={haPerdido}
+          alReiniciar={iniciarJuego}
         />
       </main>
     </div>
