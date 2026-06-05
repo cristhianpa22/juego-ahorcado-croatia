@@ -1,122 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React from "react";
+import { useAhorcado } from "./hooks/useAhorcado";
+import { Marcador } from "./components/Marcador";
+import { Pista } from "./components/pista"; // <--- Nueva importación
+import { PalabraSecreta } from "./components/PalabraSecreta";
+import { Teclado } from "./components/Teclado";
+import { EstadoFinJuego } from "./components/EstadoFinJuego";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const {
+    palabra,
+    pista, // <--- Extraemos la pista del hook
+    letrasAdivinadas,
+    errores,
+    haGanado,
+    haPerdido,
+    juegoTerminado,
+    intentarLetra,
+    iniciarJuego
+  } = useAhorcado();
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+      <main className="w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8 flex flex-col justify-between">
+        <header className="text-center mb-4">
+          <h1 className="text-3xl font-black text-slate-800 tracking-tight">
+            AHORCADO<span className="text-indigo-600">.JS</span>
+          </h1>
+        </header>
 
-      <div className="ticks"></div>
+        <Marcador errores={errores} />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        {/* Mostramos la pista de forma elegante */}
+        <Pista pista={pista} />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        <PalabraSecreta 
+          palabra={palabra} 
+          letrasAdivinadas={letrasAdivinadas} 
+          haPerdido={haPerdido} 
+        />
+
+        <Teclado 
+          letrasAdivinadas={letrasAdivinadas} 
+          juegoTerminado={juegoTerminado} 
+          alPresionarLetra={intentarLetra} 
+        />
+
+        <EstadoFinJuego 
+          haGanado={haGanado} 
+          haPerdido={haPerdido} 
+          alReiniciar={iniciarJuego} 
+        />
+      </main>
+    </div>
+  );
 }
-
-export default App
