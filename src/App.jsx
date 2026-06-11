@@ -21,6 +21,15 @@ export default function App() {
     iniciarJuego,
   } = useAhorcado();
 
+  React.useEffect(() => {
+  if (!juegoTerminado) {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" 
+    });
+  }
+}, [juegoTerminado]);
+
   return (
     <div
       className="w-full min-h-screen   flex  justify-center  bg-cover bg-center bg-no-repeat relative "
@@ -28,7 +37,7 @@ export default function App() {
     >
       <div className="absolute inset-0 bg-white/75 backdrop-blur-xs z-0" />
       
-      <main className="w-full   rounded-2xl    flex flex-col  gap-5 j z-10">
+      <main className="w-full   rounded-2xl    flex flex-col  gap-2 z-10">
         <header className="text-center p-4 bg-white/70 rounded-xl mb-2 flex  justify-start ">
          <img src={logoCroacia} alt=""  className="h-12 w-12 "/>
         <h1 className="text-3xl font-black text-blue-800 tracking-tight">
