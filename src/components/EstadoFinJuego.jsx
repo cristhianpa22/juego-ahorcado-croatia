@@ -37,7 +37,7 @@ export function EstadoFinJuego({ haGanado, haPerdido, alReiniciar }) {
             <div className="flex flex-col items-center gap-2">
               <span className="text-5xl drop-shadow-md mb-1">🏆</span>
               <h2 className="text-3xl sm:text-4xl font-black text-white tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase">
-                ¡EXCELENTE!<br />
+                EXCELLENT!<br />
                 <span className="text-emerald-400 text-xl sm:text-2xl font-bold tracking-normal normal-case block mt-1">
                   You figured out the word!
                 </span>
