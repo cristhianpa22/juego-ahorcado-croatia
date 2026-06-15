@@ -12,7 +12,7 @@ export const Teclado = React.memo(({ letrasAdivinadas, juegoTerminado, alPresion
   const desactivada = "opacity-90 cursor-not select-none text-white"
   
   return (
-    <div className="grid grid-cols-7 sm:grid-cols-9 gap-9 max-w-xl mx-auto w-full px-20">
+    <div className="grid grid-cols-7 sm:grid-cols-9 gap-9 max-w-xl mx-auto w-full px-20 mt-25">
       {ALFABETO.map((letra) => {
         const yaUsada = letrasAdivinadas.has(letra);
         
