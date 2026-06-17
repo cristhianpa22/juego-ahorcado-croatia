@@ -1,10 +1,16 @@
 export const BANCO_PALABRAS = [
-  { palabra: "SOUTHEAST", pista: "In which part of Europe is the beautiful country of Croatia located?" },
-  { palabra: "ADRIATIC", pista: "Croatia is situated on the shores of which sea?." },
-  { palabra: "ISLANDS", pista: "Croatia is famous for its stunning coastline, which features more than 1,000 of these surrounded by crystal-clear waters. What are they?." },
-  { palabra: "DUBROVNIK", pista: "Along with Split, which other historic city is mentioned as part of its famous coastline?." },
-  { palabra: "SPLIT", pista: "Along with Dubrovnik, which other historic city is highlighted for its stunning coast?" },
-  { palabra: "CRAVAT", pista: "What is the other name for the famous modern necktie that actually originated in Croatia?." }
+  { palabra: "CROATIA", pista: "This is the country we are presenting." },
+  { palabra: "MARTEN", pista: "Our mascot is this animal." },
+  { palabra: "CARDBOARD", pista: "The mascot's mask is made of this material." },
+  { palabra: "GAMEIRTRONES", pista: "The most outstanding series from Croatia." },
+  { palabra: "ADRIATIC", pista: "Croatia is located on this sea." },
+  { palabra: "ISLANDS", pista: "Croatia has more than 1.009 of these." },
+  { palabra: "CROATIAN", pista: "The official lenguage of croatia." },
+  { palabra: "EUROPE", pista: "Croatia is a country on this continent." },
+  { palabra: "TIE", pista: "The accessory invented in Croatia.." },
+  { palabra: "KUNA", pista: "The name of Croatia's former currency." },
+  { palabra: "EURO", pista: "The currency currently used in Croatia." },
+
 ];
 
 export const MAX_INTENTOS = 5;
